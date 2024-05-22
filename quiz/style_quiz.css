@@ -13,7 +13,8 @@ body{
     text-align: center;
     box-sizing: 0px 0px 5px 2px rgba(255, 1, 1, 0.1);
     padding: 20px;
-    background-color: blueviolet;
+    background-color: rgb(35, 33, 33);
+    color: white;
     width: 500px;
 }
 
@@ -25,20 +26,34 @@ body{
 }
 
 .escolha:hover{
-    background-color: red;
+    background-color: green;
+    color: white;
 }
 
 #proximo{
     margin-top: 15px;
     padding: 10px 20px;
     border: none;
-    background-color: bisque;
-    color: blue;
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
-#score, #wrong{
+#proximo:hover{
+    background-color: gray;
+    color: white;
+    transform: scale(1.1);
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#pontos{
     font-size: 1.2rem;
-    color: cornflowerblue;
+    color: rgb(118, 237, 100);
+    margin-top: 25px;
+}
+
+#erros{
+    font-size: 1.2rem;
+    color: red;
     margin-top: 25px;
 }
