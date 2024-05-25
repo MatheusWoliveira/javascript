@@ -11,7 +11,7 @@ function validarNumero() {
     } else {
         alert("O número que você digitou é inválido! Digite corretamente");
         console.log("número inválido");
-        document.getElementById("numero").value = "";
+        document.getElementById("numero").value = ""; 
         return false;
     }
 }
@@ -27,7 +27,6 @@ function verificarSenha(){
         console.log("Confirmação de senha errado !");
         return false;
     } else {
-        alert("Cadastrado");
         console.log("senha digitado certo !");
     }
 
@@ -61,8 +60,21 @@ document.getElementById("numero").addEventListener("blur", function(){
     validarNumero();
 });
 
+// function enviarForms(event){
+
+//     document.getElementById("formulario").addEventListener("submit")
+
+//     if(!validarNumero() || validarNom() || verificarSenha()){
+//         event.preventDefault();
+//     } else {
+//         alert("você se cadastrou com sucesso !!");
+//     }
+// }
+
 document.getElementById("formulario").addEventListener("submit", function(event) {
     if (!validarNumero() || !verificarSenha() || !validarNome()) {
         event.preventDefault(); // Impede a submissão do formulário
-    } 
+    } else {
+        alert("Você se cadastrou com sucesso !!");
+    }
 });
