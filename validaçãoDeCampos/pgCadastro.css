@@ -9,6 +9,10 @@ body {
     height: 100vh;
   }
   
+  .form-container h1{
+    text-align: center;
+  }
+
   .form-container {
     background-color: #fff;
     padding: 20px;
