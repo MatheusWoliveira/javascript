@@ -1,9 +1,37 @@
 //Página de Cadastro
 
 //Funções para validar o formulário
+
+function validarNome() {
+
+    var nomeValido = document.getElementById("nome").value;
+
+    if(nomeValido == ""){
+        alert("Por Favor ! Digite seu nome");
+        document.getElementById("nome").value = "";
+        console.log("Nome não digitado");
+        return false;
+    } else {
+        console.log(("Nome digitado"));
+    }
+
+    return true;
+}
+
+function capturarNumero(){
+    var numeroCapturado = document.getElementById("nome").value
+
+    //incompleto
+    if (numeroCapturado === pattern.length){
+        alert("Nome inválido !");
+        console.log("Digitou número");
+    } else console.log("nao digitou número");
+}
+
 function validarNumero() { 
 
     var numeroValido = document.getElementById("numero").value;
+    var verificarNumero = true;
 
     if (numeroValido.length === 11){
         console.log("número válido");
@@ -14,6 +42,18 @@ function validarNumero() {
         document.getElementById("numero").value = ""; 
         return false;
     }
+}
+
+function minimoSenha(){
+
+    var minimoCaractere = document.getElementById("senha").value
+
+    if (minimoCaractere.length < 6){
+        alert("Sua senha deve conter no minimo 6 caracteres ! ");
+        console.log("Não foi digitado o minimo de números sugeridos");
+        document.getElementById("senha").value = "";
+    }
+    
 }
 
 function verificarSenha(){
@@ -33,32 +73,19 @@ function verificarSenha(){
     return true;
 }
 
-function validarNome() {
-
-    var nomeValido = document.getElementById("nome").value;
-
-    if(nomeValido == ""){
-        alert("Por Favor ! Digite seu nome");
-        document.getElementById("nome").value = "";
-        console.log("Nome não digitado");
-        return false;
-    } else {
-        console.log(("Nome digitado"));
-    }
-
-    return true;
-
-}
-
 // Eventos
 
 document.getElementById("nome").addEventListener("blur", function(){
-    validarNome();
+    validarNome(); capturarNumero();
 })
 
 document.getElementById("numero").addEventListener("blur", function(){
     validarNumero();
 });
+
+document.getElementById("senha").addEventListener("blur", function(){
+    minimoSenha();
+})
 
 // function enviarForms(event){
 
