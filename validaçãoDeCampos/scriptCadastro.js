@@ -12,20 +12,26 @@ function validarNome() {
         console.log("Nome não digitado");
         return false;
     } else {
-        console.log(("Nome digitado"));
+        console.log("Nome digitado");
     }
 
     return true;
 }
 
 function capturarNumero(){
-    var numeroCapturado = document.getElementById("nome").value
+    var nome = document.getElementById("nome").value;
+    var pattern = /\d/;
 
     //incompleto
-    if (numeroCapturado === pattern.length){
+    if (pattern.test(nome)){
         alert("Nome inválido !");
         console.log("Digitou número");
-    } else console.log("nao digitou número");
+        document.getElementById("nome").value = "";
+        return false;
+    } else {
+        console.log("nao digitou número");
+        return true;
+    } 
 }
 
 function validarNumero() { 
@@ -76,7 +82,8 @@ function verificarSenha(){
 // Eventos
 
 document.getElementById("nome").addEventListener("blur", function(){
-    validarNome(); capturarNumero();
+    validarNome(); 
+    capturarNumero();
 })
 
 document.getElementById("numero").addEventListener("blur", function(){
@@ -86,17 +93,6 @@ document.getElementById("numero").addEventListener("blur", function(){
 document.getElementById("senha").addEventListener("blur", function(){
     minimoSenha();
 })
-
-// function enviarForms(event){
-
-//     document.getElementById("formulario").addEventListener("submit")
-
-//     if(!validarNumero() || validarNom() || verificarSenha()){
-//         event.preventDefault();
-//     } else {
-//         alert("você se cadastrou com sucesso !!");
-//     }
-// }
 
 document.getElementById("formulario").addEventListener("submit", function(event) {
     if (!validarNumero() || !verificarSenha() || !validarNome()) {
