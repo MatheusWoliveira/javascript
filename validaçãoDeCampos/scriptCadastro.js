@@ -10,6 +10,7 @@ function validarNome() {
         alert("Digite seu nome completo");
         console.log("Não foi digitado o nome completo");
         document.getElementById("nome").value = "";
+        return false;
     } else console.log("Digitou o nome completo");
 
     if(nomeValido == ""){
@@ -64,6 +65,10 @@ function minimoSenha(){
         alert("Sua senha deve conter no minimo 6 caracteres ! ");
         console.log("Não foi digitado o minimo de números sugeridos");
         document.getElementById("senha").value = "";
+        return false;
+    } else {
+        console.log("Senha com mínimo de caracteres válida");
+        return true
     }
     
 }
@@ -92,7 +97,7 @@ document.getElementById("nome").addEventListener("blur", function(){
     capturarNumero();
 })
 
-document.getElementById("numero").addEventListener("blur", function(){
+document.getElementById("numero").addEventListener("submit", function(){
     validarNumero();
 });
 
@@ -101,7 +106,7 @@ document.getElementById("senha").addEventListener("blur", function(){
 })
 
 document.getElementById("formulario").addEventListener("submit", function(event) {
-    if (!validarNumero() || !verificarSenha() || !validarNome()) {
+    if (!validarNumero() || !verificarSenha() || !validarNome() ) {
         event.preventDefault(); // Impede a submissão do formulário
     } else {
         alert("Você se cadastrou com sucesso !!");
