@@ -6,6 +6,12 @@ function validarNome() {
 
     var nomeValido = document.getElementById("nome").value;
 
+    if (nomeValido.length <= 7){
+        alert("Digite seu nome completo");
+        console.log("Não foi digitado o nome completo");
+        document.getElementById("nome").value = "";
+    } else console.log("Digitou o nome completo");
+
     if(nomeValido == ""){
         alert("Por Favor ! Digite seu nome");
         document.getElementById("nome").value = "";
