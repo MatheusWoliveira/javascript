@@ -68,7 +68,7 @@ function minimoSenha(){
         return false;
     } else {
         console.log("Senha com mínimo de caracteres válida");
-        return true
+        return true 
     }
     
 }
