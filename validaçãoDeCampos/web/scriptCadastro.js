@@ -112,3 +112,36 @@ document.getElementById("formulario").addEventListener("submit", function(event)
         alert("Você se cadastrou com sucesso !!");
     }
 });
+
+
+//Conexão com back
+
+document.getElementById('formulario').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+    const confirmarSenha = document.getElementById('confirmar-senha').value;
+    const telefone = document.getElementById('numero').value;
+
+    if (senha !== confirmarSenha) {
+        document.getElementById('msg').textContent = 'As senhas não coincidem';
+        return;
+    }
+
+    const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ nome, email, senha, telefone })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        alert(data.msg); // Mensagem de sucesso
+        window.location.href = 'pgLogin.html'; // Redireciona para a página de login
+    } else {
+        document.getElementById('msg').textContent = data.msg; // Mensagem de erro
+    }
+});

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="scriptLogin.js" defer></script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Login</h1>
+        <form id="formulario-login" method="POST">
+            <label for="email-login">Email:</label>
+            <input type="email" id="email-login" name="email-login" required>
+            
+            <label for="senha-login">Senha:</label>
+            <input type="password" id="senha-login" name="senha-login" required>
+            
+            <button type="submit" id="submit-login">Entrar</button>
+        </form>
+        <div id="msg-login"></div>
+    </div>
+</body>
+</html>
