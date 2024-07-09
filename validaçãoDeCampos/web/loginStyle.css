@@ -13,7 +13,7 @@ body{
     display: grid;
     place-items: center;
     position: relative;
-    width: 300px;
+    width: 400px;
     height: 472px;
     padding: 25px;
     background-color: #161616;
@@ -71,6 +71,11 @@ button{
     text-decoration: none;
     text-align: left;
     color: white;
+}
+
+img{
+    width: 20px;
+    height: 25px;
 }
 
 #msg-login{

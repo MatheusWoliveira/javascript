@@ -54,6 +54,11 @@ body {
     h1{
       color: #00ff7f;
     }
+
+    img{
+      width: 20px;
+      height: 25px;
+  }
   
     #msg{
       margin-top: 15px;
