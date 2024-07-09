@@ -36,7 +36,7 @@ function capturarNumero(){
         document.getElementById("nome").value = "";
         return false;
     } else {
-        console.log("nao digitou número");
+        console.log("nao digitou número no campo nome");
         return true;
     } 
 }
@@ -79,7 +79,6 @@ function verificarSenha(){
     var confirmacaoDeSenha = document.getElementById("confirmar-senha").value;
 
     if(senha1 != confirmacaoDeSenha){
-        alert("Senha incorreta ! Digite a mesma senha digitada anterior");
         document.getElementById("confirmar-senha").value = "";
         console.log("Confirmação de senha errado !");
         return false;
@@ -108,9 +107,7 @@ document.getElementById("senha").addEventListener("blur", function(){
 document.getElementById("formulario").addEventListener("submit", function(event) {
     if (!validarNumero() || !verificarSenha() || !validarNome() ) {
         event.preventDefault(); // Impede a submissão do formulário
-    } else {
-        alert("Você se cadastrou com sucesso !!");
-    }
+    } 
 });
 
 

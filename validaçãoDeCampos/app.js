@@ -34,7 +34,7 @@ app.post('/api/register', async (req, res) => {
 
         await user.save();
         console.log('Usuário registrado com sucesso:', user);
-        res.json({ msg: 'Usuário registrado com sucesso' });
+        res.json({ msg: 'Você se cadastrou com sucesso !!' });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Erro no servidor');
@@ -49,13 +49,13 @@ app.post('/api/login', async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) {
             console.log('Usuário não encontrado');
-            return res.status(400).json({ msg: 'Credenciais inválidas' });
+            return res.status(400).json({ msg: 'Email ou senha incorreto' });
         }
 
         const isMatch = await bcrypt.compare(senha, user.senha);
         if (!isMatch) {
             console.log('Senha incorreta');
-            return res.status(400).json({ msg: 'Credenciais inválidas' });
+            return res.status(400).json({ msg: 'senha incorreto' });
         }
 
         const payload = {
