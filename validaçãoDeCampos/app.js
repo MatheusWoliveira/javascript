@@ -49,7 +49,7 @@ app.post('/api/login', async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) {
             console.log('Usuário não encontrado');
-            return res.status(400).json({ msg: 'Email ou senha incorreto' });
+            return res.status(400).json({ msg: 'Usuário não encontrado !' });
         }
 
         const isMatch = await bcrypt.compare(senha, user.senha);
