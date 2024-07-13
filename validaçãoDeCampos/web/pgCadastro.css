@@ -53,6 +53,7 @@ body {
 
     h1{
       color: #00ff7f;
+      margin-left: 115px;
     }
 
     img{
@@ -68,4 +69,12 @@ body {
 
     .form-container .link{
       text-align: right;
+    }
+
+    .topo{
+      display: flex;
+    }
+
+    .link{
+      margin-top: 26px;
     }
