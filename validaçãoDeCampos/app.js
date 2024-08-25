@@ -1,22 +1,23 @@
 // app.js
 const express = require('express');
-const connectDB = require('./database');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('./models/model');
-const path = require('path');
+const connectDB = require('./database'); 
+const bcrypt = require('bcryptjs'); // Biblioteca para hashing(modo grosseiro: embaralhamento de senhas) de senhas
+const jwt = require('jsonwebtoken'); //Biblioteca para geração de tokens JWT
+const User = require('./models/model'); 
+const path = require('path'); 
 
 const app = express();
 connectDB();
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'web')));
+app.use(express.json()); // Middleware para permitir a aplicação lidar com dados em JSON
+app.use(express.static(path.join(__dirname, 'web')));// Middleware para servir arquivos estáticos (como HTML, CSS, JS)
 
 // Rota para registro de usuário
 app.post('/api/register', async (req, res) => {
     const { nome, email, senha, telefone } = req.body;
 
     try {
+        // Aqui está sendo feita a verificação de usuário com o email fornecido
         let user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({ msg: 'Este email já está sendo usado' });
@@ -29,7 +30,9 @@ app.post('/api/register', async (req, res) => {
             telefone
         });
 
+        // gerando um salt para hashing da senha
         const salt = await bcrypt.genSalt(10);
+        // Hashing da senha gerado
         user.senha = await bcrypt.hash(senha, salt);
 
         await user.save();
@@ -49,15 +52,16 @@ app.post('/api/login', async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) {
             console.log('Usuário não encontrado');
-            return res.status(400).json({ msg: 'Usuário não encontrado !' });
+            return res.status(400).json({ msg: 'Usuário não encontrado!' });
         }
 
         const isMatch = await bcrypt.compare(senha, user.senha);
         if (!isMatch) {
             console.log('Senha incorreta');
-            return res.status(400).json({ msg: 'senha incorreto' });
+            return res.status(400).json({ msg: 'senha incorreta' });
         }
 
+        // Define o payload do token JWT
         const payload = {
             user: {
                 id: user.id
